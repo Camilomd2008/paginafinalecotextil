@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOTEXTIL - PRODUCTOS</title>
+    <link rel="stylesheet" href="styleslavanda.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>ECOTEXTIL</h1>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos2.html">Productos</a></li>
+                    <li><a href="Contactanos.html">Contactanos</a></li>
+                    <li><a href="Donaciones.html">Donaciones</a></li>
+                    <li>
+                        <a href="carrito.html">
+                            <img src="img/464-4646442_carrito-de-compras-carro-de-compras-blanco-clipart.png" alt="Carrito de compras" style="width: 24px; height: 24px;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+            <!-- Mensaje flotante -->
+            <div id="mensaje-carrito"></div>
+
+    <main>
+        <section class="product-section">
+            <div class="container">
+                <h2>Nuestros Productos</h2>
+                <div class="product-list">
+                    <div class="product">
+                        <img src="img/bolsojean.jpg" alt="Bolso de jean">
+                        <h3>Bolso de Jean</h3>
+                        <p>Precio: $30.000</p>
+                        <label for="quantity-1">Cantidad:</label>
+                        <input type="number" id="quantity-1" value="1" min="1">
+                        <button class="agregar-carrito" data-id="1" data-nombre="Bolso de Jean" data-precio="$30.000">Agregar al Carrito</button>
+                    </div>
+
+                    <div class="product">
+                        <img src="https://via.placeholder.com/200" alt="Trapo para limpiar carro">
+                        <h3>Trapo para Limpiar Carro</h3>
+                        <p>Precio: $6.000</p>
+                        <label for="quantity-2">Cantidad:</label>
+                        <input type="number" id="quantity-2" value="1" min="1">
+                        <button class="agregar-carrito" data-id="2" data-nombre="Trapo para Limpiar Carro" data-precio="$6.000">Agregar al Carrito</button>
+                    </div>
+
+                    <div class="product">
+                        <img src="https://via.placeholder.com/200" alt="Trapero">
+                        <h3>Trapero</h3>
+                        <p>Precio: $8.000</p>
+                        <label for="quantity-3">Cantidad:</label>
+                        <input type="number" id="quantity-3" value="1" min="1">
+                        <button class="agregar-carrito" data-id="3" data-nombre="Trapero" data-precio="$8.000">Agregar al Carrito</button>
+                    </div>
+
+                    <div class="product">
+                        <img src="img/camaparaperro.jpg" alt="Cama para perro">
+                        <h3>Cama para Perro</h3>
+                        <p>Precio: $55.000</p>
+                        <label for="quantity-4">Cantidad:</label>
+                        <input type="number" id="quantity-4" value="1" min="1">
+                        <button class="agregar-carrito" data-id="4" data-nombre="Cama para Perro" data-precio="$55.000">Agregar al Carrito</button>
+                    </div>
+
+                    <div class="product">
+                        <img src="https://via.placeholder.com/200" alt="Cama para gato">
+                        <h3>Cama para Gato</h3>
+                        <p>Precio: $55.000</p>
+                        <label for="quantity-5">Cantidad:</label>
+                        <input type="number" id="quantity-5" value="1" min="1">
+                        <button class="agregar-carrito" data-id="5" data-nombre="Cama para Gato" data-precio="$55.000">Agregar al Carrito</button>
+                    </div>
+
+                    <div class="product">
+                        <img src="img/pañoleta.jpg" alt="Pañoleta">
+                        <h3>Pañoleta</h3>
+                        <p>Precio: $10.000</p>
+                        <label for="quantity-6">Cantidad:</label>
+                        <input type="number" id="quantity-6" value="1" min="1">
+                        <button class="agregar-carrito" data-id="6" data-nombre="Pañoleta" data-precio="$10.000">Agregar al Carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Función para agregar productos al carrito
+        const buttons = document.querySelectorAll('.add-to-cart');
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                const quantity = parseInt(button.previousElementSibling.value);
+                
+                const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+                const existingProductIndex = carrito.findIndex(item => item.nombre === name);
+    
+                if (existingProductIndex > -1) {
+                    carrito[existingProductIndex].cantidad += quantity;
+                } else {
+                    carrito.push({
+                        nombre: name,
+                        precio: price,
+                        cantidad: quantity
+                    });
+                }
+    
+                localStorage.setItem("carrito", JSON.stringify(carrito));
+                alert(`${name} agregado al carrito!`); 
+            });
+        });
+    </script>
+</body>
+</html>

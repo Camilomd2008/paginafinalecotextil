@@ -1,0 +1,289 @@
+
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #606060;
+    color: #f4f4f4;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+header {      
+    background: #A8E6CF;
+    color: #f4f4f4;
+    padding: 1rem 0;
+}
+
+nav .container {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+nav h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 1rem;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: #000000;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.product {
+    background: #2e2e2e;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 2rem;
+    width: calc(50% - 2rem); 
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.product h3 {
+    margin: 0.5rem 0;
+    color: #ffdd57;
+}
+
+.product p {
+    color: #bbb;
+}
+
+.product a {
+    display: inline-block;
+    background: #ffdd57;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.product a:hover {
+    background: #A8E6CF;
+}
+
+footer {
+    background: #333;
+    color: #f4f4f4;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.container a {
+    background: #2e2e2e;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 1rem;
+    width: calc(30% - 2rem); 
+    text-align: center;  
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.container {
+    display: inline-block;
+    background: #A8E6CF;
+    color: #333;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    background: #444;
+    color: #f4f4f4;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.container {
+    background: #2e2e2e;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 1rem;
+    width: calc(100% - 2rem);
+    text-align: center;  
+}
+
+.container h3 {
+    margin: 0.5rem 0;
+    color: #A8E6CF;
+}
+
+.container a:hover {
+    background: #A8E6CF;
+}
+
+/* Estilos del formulario de sugerencias */
+.suggestions-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #444; 
+}
+
+.suggestions-section h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #A8E6CF; 
+}
+
+.suggestions-section .container {
+    background-color: #2e2e2e; 
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%; 
+    margin: 0 auto; 
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    color: #A8E6CF;
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #2e2e2e;
+    color: #f4f4f4;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+    border-color: #A8E6CF; 
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #a8e6cfcf;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #A8E6CF; 
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #f4f4f4;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Sección de redes sociales */
+.social-media {
+    background-color: #2e2e2e;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.social-media h3 {
+    color: #A8E6CF;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 0.8rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-color: transparent;
+}
+
+
+.social-btn img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+/* Estilos individuales para cada red social */
+.social-btn.instagram:hover img {
+    transform: scale(1.1);
+}
+
+.social-btn.whatsapp:hover img {
+    transform: scale(1.1);
+}
+
+.social-btn.facebook:hover img {
+    transform: scale(1.1);
+}
+
+/* Efectos hover para los botones */
+.social-btn.instagram:hover {
+    background-color: rgba(228, 64, 95, 0.2);
+}
+
+.social-btn.whatsapp:hover {
+    background-color: rgba(37, 211, 102, 0.2);
+}
+
+.social-btn.facebook:hover {
+    background-color: rgba(24, 119, 242, 0.2);
+}

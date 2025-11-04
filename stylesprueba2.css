@@ -1,0 +1,79 @@
+/* Estilos base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5fff2; /* Verde pastel claro */
+    color: #333;
+  }
+  
+  /* Menú principal */
+  nav {
+    background-color: #c2e8c2;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .menu > li {
+    position: relative;
+  }
+  
+  .menu li a {
+    display: block;
+    padding: 15px 20px;
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu li a:hover {
+    background-color: #a7dca7;
+  }
+  
+  /* Submenú */
+  .submenu {
+    display: none;
+    position: absolute;
+    background-color: #e6ffe6;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 999;
+  }
+  
+  .dropdown:hover .submenu {
+    display: block;
+  }
+  
+  .submenu li a {
+    padding: 10px 20px;
+    white-space: nowrap;
+  }
+  
+  /* Ícono del carrito */
+  .carrito-icono {
+    padding: 15px 20px;
+  }
+  
+  .carrito-icono i {
+    font-size: 1.2em;
+  }
+  
+  /* Secciones */
+  section {
+    padding: 40px 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  

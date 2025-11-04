@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Producto - ECOTEXTIL</title>
+  <link rel="stylesheet" href="styleslavanda.css">
+  <style>
+    .producto-detalle {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 2rem auto;
+      gap: 2rem;
+    }
+
+    .galeria {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .miniaturas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .miniaturas img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 8px;
+    }
+
+    .miniaturas img:hover {
+      border-color: #ccc;
+    }
+
+    .info {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .precio {
+      font-size: 1.8rem;
+      color: #444;
+    }
+
+
+    .mensaje {
+      color: green;
+      margin-top: 1rem;
+    }
+
+    .carrito-contador {
+      position: relative;
+    }
+
+    .carrito-contador span {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-centro">
+            <img src="img/logo_transparente_final.png" alt="Logo de Ecotextil">
+            <p>""De lo que otros desechan, nosotros creamos algo con proposito""</p>
+            <ul class="menu">
+                <li><a href="index.html">inicio</a></li>
+                <li class="dropdown">
+                    <a href="nosotros.html">Nosotros</a>
+                    <ul class="submenu">
+                        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                        <li><a href="#nuestra-mision">Nuestra Misión</a></li>
+                        <li><a href="#nuestra-vision">Nuestra Visión</a></li>
+                        <li><a href="#resultados">Resultados de la Encuesta</a></li>
+                    </ul>
+                </li>
+                <li><a href="productos2.html">Productos</a></li>
+                <li><a href="Contactanos.html">Contáctanos</a></li>
+                <li>
+                    <a href="Carrito.html" class="carrito-icono" style="position: relative;">
+                       <img src="img/464-4646442_carrito-de-compras-carro-de-compras-blanco-clipart.png" alt="Carrito de compras" style="width: 24px; height: 24px;">
+                       <span id="contador-carrito" style="position: absolute; top: -8px; right: -8px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+  <main class="producto-detalle">
+    <div class="galeria">
+      <img id="imagen-principal" src="img/WhatsApp Image 2025-06-05 at 11.37.26 PM.jpeg" alt="Bolso de Jean">
+      <div class="miniaturas">
+        <img src="img/WhatsApp Image 2025-06-05 at 11.37.26 PM.jpeg" alt="Mini 1" onclick="cambiarImagen(this)">
+        <img src="img/WhatsApp Image 2025-06-05 at 11.37.26 PM (1).jpeg" alt="Mini 2" onclick="cambiarImagen(this)">
+      </div>
+    </div>
+
+    <div class="info">
+      <h2>Cama para gato</h2>
+      <p>Cama para gato acolchada fabricada a base de material textil reciclado, ideal para tu mascota.</p>
+      <p class="precio">$30.000</p>
+
+      <button class="btn-agregar" onclick="agregarAlCarrito()">Añadir al carrito</button>
+      <p class="mensaje" id="mensaje-ok" style="display: none;">Producto agregado al carrito</p>
+    </div>
+
+
+    <div id="chatbot-container">
+        <button id="chatbot-toggle" class="circle-button"> 💬 </button>
+        <div id="chatbot-window">
+            <div id="chat-header">
+                <h3>Asistente Ecotextil</h3>
+                <span id="close-chat">&times;</span>
+            </div>
+            <div id="chat-messages">
+                </div>
+            <div id="chat-input-container">
+                <input type="text" id="user-input" placeholder="Escribe aquí..." />
+                <button id="send-button">Enviar</button>
+                <button id="clear-chat-button">Limpiar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-details-popup">
+        <div id="product-details-content">
+            <span id="close-popup">&times;</span>
+            <h3 id="product-name"></h3>
+            <img id="product-image" src="" alt="Imagen del producto">
+            <p id="product-description"></p>
+            <p id="product-price"></p>
+            <p id="product-features"></p>
+            <button id="buy-button">Añadir al Carrito</button>
+        </div>
+    </div>
+  </main>
+
+      <footer>
+        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+            <!-- Buzón de sugerencias -->
+            <div style="flex: 1; min-width: 250px;">
+                <h3>Buzón de Sugerencias</h3>
+                <form id="sugerencias-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <textarea name="sugerencia" rows="4" placeholder="Escribe tu sugerencia aquí..." required
+                        style="padding: 1rem; border: 1px solid #ccc; border-radius: 8px;"></textarea>
+                    <button type="submit"
+                        style="background-color: #9c88ff; color: white; border: none; padding: 0.75rem; border-radius: 8px; cursor: pointer;">
+                        Enviar Sugerencia
+                    </button>
+                    <p id="mensaje-confirmacion" style="display: none; color: green;">¡Gracias por tu sugerencia!</p>
+                </form>
+            </div>
+
+            <!-- Redes sociales -->
+            <div style="flex: 1; min-width: 250px;">
+                <h3>Síguenos en:</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/" target="_blank" class="social-btn instagram">
+                        <img src="img/Instagram-logo.png" alt="Instagram" />
+                    </a>
+                    <a href="https://wa.me/3147700560" target="_blank" class="social-btn whatsapp">
+                        <img src="img/whatsapp-logo.webp" alt="WhatsApp" />
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" class="social-btn facebook">
+                        <img src="img/facebook-logo.webp" alt="Facebook" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="text-align: center; margin-top: 1rem;">
+            <p>&copy; 2024 ECOTEXTIL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+<script>
+  function cambiarImagen(img) {
+    document.getElementById('imagen-principal').src = img.src;
+  }
+
+  function agregarAlCarrito() {
+    const nombre = document.querySelector('.info h2').textContent.trim();
+    const precioTexto = document.querySelector('.precio').textContent.replace(/[^\d]/g, '');
+    const precio = parseInt(precioTexto, 10) || 0;
+    const cantidad = 1;
+    const imagen = document.getElementById('imagen-principal').src;
+
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const index = carrito.findIndex(item => item.nombre === nombre);
+
+    if (index > -1) {
+      carrito[index].cantidad += cantidad;
+    } else {
+      carrito.push({ nombre, precio, cantidad, imagen });
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
+    // Actualizar contador total
+    let total = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+    localStorage.setItem('carritoCantidad', total);
+    document.getElementById('contador-carrito').textContent = total;
+
+    document.getElementById('mensaje-ok').style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('mensaje-ok').style.display = 'none';
+    }, 1500);
+  }
+
+  function actualizarContadorCarrito() {
+    const cantidad = localStorage.getItem('carritoCantidad') || '0';
+    const contador = document.getElementById('contador-carrito');
+    if (contador) contador.textContent = cantidad;
+  }
+
+  actualizarContadorCarrito();
+
+  // ==========================
+  // --- CHATBOT AVANZADO V6 ---
+  // ==========================
+  const chatbotToggle = document.getElementById('chatbot-toggle');
+  const chatbotWindow = document.getElementById('chatbot-window');
+  const chatClose = document.getElementById('close-chat');
+  const userInput = document.getElementById('user-input');
+  const sendButton = document.getElementById('send-button');
+  const clearChatButton = document.getElementById('clear-chat-button');
+  const chatMessages = document.getElementById('chat-messages');
+
+  const productos = [
+    {
+      nombre: "Maleta de Jean",
+      link: "productomaleta.html",
+      categoria: "accesorios",
+      precio: "$29.000",
+      caracteristicas: "Hecha de tela de jean reciclada, forrada con tela sintética. Ideal para el día a día. Cómoda y duradera.",
+      medidas: "40cm x 35cm",
+      imagen: "img/WhatsApp Image 2025-09-11 at 1.32.17 PM.jpeg"
+    },
+    {
+      nombre: "Bolso de Jean",
+      link: "productobolso.html",
+      categoria: "accesorios",
+      precio: "$22.000",
+      caracteristicas: "Hecho de tela de jean reciclada. Ideal para el día a día. Cómodo y duradero.",
+      medidas: "25cm x 30cm",
+      imagen: "img/bolsojean.jpg"
+    },
+    {
+      nombre: "Trapo para Limpiar",
+      link: "productotrapo.html",
+      categoria: "hogar",
+      precio: "$6.000",
+      caracteristicas: "Elaborado con telas de algodón reutilizadas. Absorbe líquidos de manera eficiente. Ideal para la limpieza del hogar.",
+      medidas: "24cm x 24cm",
+      imagen: "img/WhatsApp Image 2025-06-06 at 1.17.37 PM (2).jpeg"
+    },
+    {
+      nombre: "Funda para Almohada",
+      link: "productofunda.html",
+      categoria: "hogar",
+      precio: "$8.000",
+      caracteristicas: "Fabricada con retazos de tela de distintos colores. Suave al tacto y fácil de lavar.",
+      medidas: "43cm x 43cm",
+      imagen: "img/WhatsApp Image 2025-08-29 at 1.40.49 PM.jpeg"
+    },
+    {
+      nombre: "Cama para Perro",
+      link: "productocamaperro.html",
+      categoria: "mascotas",
+      precio: "$30.000",
+      caracteristicas: "Rellena con fibras de ropa reciclada. Proporciona comodidad y calidez a tu mascota.",
+      medidas: "40cm x 40cm",
+      imagen: "img/WhatsApp Image 2025-06-05 at 11.37.26 PM.jpeg"
+    },
+    {
+      nombre: "Cama para Gato",
+      link: "productocamagato.html",
+      categoria: "mascotas",
+      precio: "$30.000",
+      caracteristicas: "Diseñada para el confort de los felinos. Materiales suaves y ecológicos.",
+      medidas: "40cm x 40cm",
+      imagen: "img/WhatsApp Image 2025-06-05 at 11.37.26 PM.jpeg"
+    },
+    {
+      nombre: "Pañoleta",
+      link: "productopañoleta.html",
+      categoria: "mascotas",
+      precio: "$8.000",
+      caracteristicas: "Perfecta para complementar el look de tu mascota. Hecha de tela de algodón reutilizada.",
+      medidas: "39cm x 95cm",
+      imagen: "img/pañoleta.jpg"
+    }
+  ];
+
+  function addMessage(msg, sender = "bot", isHtml = false) {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.classList.add(sender === "bot" ? "bot-message" : "user-message");
+    if (isHtml) {
+      div.innerHTML = msg;
+    } else {
+      div.textContent = msg;
+    }
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  // Renderizar categorías con acordeones e imágenes
+  function displayCategoryAccordion() {
+    const categories = ['mascotas', 'hogar', 'accesorios'];
+    let html = '<p>Puedes explorar nuestros productos por categoría:</p>';
+    
+    categories.forEach(category => {
+      const categoryProducts = productos.filter(p => p.categoria === category);
+      const categoryId = `category-${category}-${Date.now()}`;
+      
+      html += `
+        <div class="product-accordion-item">
+          <button class="accordion-button" aria-expanded="false" aria-controls="${categoryId}">
+            ${category.charAt(0).toUpperCase() + category.slice(1)}
+            <span class="accordion-icon">▶</span>
+          </button>
+          <div id="${categoryId}" class="accordion-content">
+            <div class="category-content-container">
+              ${categoryProducts.map((p, index) => {
+                const productId = `product-${p.nombre.replace(/\s/g, '-')}-${Date.now()}-${index}`;
+                return `
+                  <div class="product-accordion-item-nested">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="${productId}">
+                      ${p.nombre}
+                      <span class="accordion-icon">▶</span>
+                    </button>
+                    <div id="${productId}" class="accordion-content">
+                      <img src="${p.imagen}" alt="${p.nombre}" style="max-width:120px; border-radius:8px; margin-bottom:8px;">
+                      <p><strong>Precio:</strong> ${p.precio}</p>
+                      <p><strong>Características:</strong> ${p.caracteristicas}</p>
+                      <p><strong>Medidas:</strong> ${p.medidas}</p>
+                      <button class="buy-button" onclick="window.location.href='${p.link}'">Ver y Comprar</button>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    });
+    addMessage(html, "bot", true);
+    setupAccordionListeners();
+  }
+
+  function setupAccordionListeners() {
+    document.querySelectorAll('.accordion-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = document.getElementById(button.getAttribute('aria-controls'));
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', !isExpanded);
+        content.classList.toggle('active');
+
+        const innerContent = content.querySelector('.category-content-container');
+        if (innerContent) {
+          innerContent.classList.toggle('active', !isExpanded);
+        }
+        
+        button.querySelector('.accordion-icon').textContent = isExpanded ? '▶' : '▼';
+      });
+    });
+  }
+
+  function handleBotResponse(query) {
+    const q = query.toLowerCase().trim();
+    if (q.length > 0) {
+      const welcomeMessage = `
+        ¡Hola! Soy el asistente de Ecotextil. 🌱
+        <br><br>
+        ¿En qué puedo ayudarte?
+      `;
+      addMessage(welcomeMessage, "bot", true);
+      displayCategoryAccordion();
+      return;
+    }
+  }
+
+  chatbotToggle.addEventListener('click', () => {
+    const isVisible = chatbotWindow.style.display === 'block';
+    chatbotWindow.style.display = isVisible ? 'none' : 'block';
+    if (!isVisible) {
+      chatMessages.innerHTML = '';
+    }
+  });
+
+  chatClose.addEventListener('click', () => {
+    chatbotWindow.style.display = 'none';
+  });
+
+  sendButton.addEventListener('click', () => {
+    const text = userInput.value.trim();
+    if (text === "") return;
+    addMessage(text, "user");
+    chatMessages.innerHTML = '';
+    handleBotResponse(text);
+    userInput.value = '';
+  });
+
+  userInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') sendButton.click();
+  });
+
+  clearChatButton.addEventListener('click', () => {
+    chatMessages.innerHTML = '';
+  });
+</script>
+</body>
+</html>
+
