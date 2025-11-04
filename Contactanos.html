@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOTEXTIL - INICIO</title>
+    <link rel="stylesheet" href="styleslavanda.css">
+</head>
+
+<body>
+    <header>
+        <nav class="nav-centro">
+            <img src="img/logo_transparente_final.png" alt="Logo de Ecotextil">
+            <p>""De lo que otros desechan, nosotros creamos algo con proposito""</p>
+            <ul class="menu">
+                <li><a href="index.html">inicio</a></li>
+                <li class="dropdown">
+                    <a href="nosotros.html">Nosotros</a>
+                    <ul class="submenu">
+                        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                        <li><a href="#nuestra-mision">Nuestra Misión</a></li>
+                        <li><a href="#nuestra-vision">Nuestra Visión</a></li>
+                        <li><a href="#resultados">Resultados de la Encuesta</a></li>
+                    </ul>
+                </li>
+                <li><a href="productos2.html">Productos</a></li>
+                <li><a href="Contactanos.html">Contáctanos</a></li>
+                <li>
+                    <a href="Carrito.html" class="carrito-icono" style="position: relative;">
+                       <img src="img/464-4646442_carrito-de-compras-carro-de-compras-blanco-clipart.png" alt="Carrito de compras" style="width: 24px; height: 24px;">
+                       <span id="contador-carrito" style="position: absolute; top: -8px; right: -8px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+
+    
+    <main>
+        
+        <div class="textarea">
+            <h1>Buzón de Sugerencias</h1>
+            <p>Si tienes alguna pregunta, no dudes en ponerte en contacto con nosotros. Completa el formulario a continuación y recibiremos tu sugerencia o comentario</a>.</p>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" placeholder="" required>
+                </div>
+                <div class="form-group">
+                    <label for="suggestion">Tu sugerencia o comentario:</label>
+                    <textarea id="suggestion" name="suggestion" rows="5" placeholder="" required></textarea>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+
+                <div id="chatbot-container">
+        <button id="chatbot-toggle" class="circle-button"> 💬 </button>
+        <div id="chatbot-window">
+            <div id="chat-header">
+                <h3>Asistente Ecotextil</h3>
+                <span id="close-chat">&times;</span>
+            </div>
+            <div id="chat-messages">
+                </div>
+            <div id="chat-input-container">
+                <input type="text" id="user-input" placeholder="Escribe aquí..." />
+                <button id="send-button">Enviar</button>
+                <button id="clear-chat-button">Limpiar</button>
+            </div>
+        </div>
+    </div>
+
+<section class="social-media">
+                           
+</section>
+    
+
+    </main>
+
+    <footer>
+        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+            <div style="flex: 1; min-width: 250px;">
+                <h3>Buzón de Sugerencias</h3>
+                <form id="sugerencias-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <textarea name="sugerencia" rows="4" placeholder="Escribe tu sugerencia aquí..." required
+                        style="padding: 1rem; border: 1px solid #ccc; border-radius: 8px;"></textarea>
+                    <button type="submit"
+                        style="background-color: #9c88ff; color: white; border: none; padding: 0.75rem; border-radius: 8px; cursor: pointer;">
+                        Enviar Sugerencia
+                    </button>
+                    <p id="mensaje-confirmacion" style="display: none; color: green;">¡Gracias por tu sugerencia!</p>
+                </form>
+            </div>
+
+            <div style="flex: 1; min-width: 250px;">
+                <h3>Síguenos en:</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/eco_textil2025?igsh=MXRrcGt6Mjg5Mng3bg==" target="_blank" class="social-btn instagram">
+                        <img src="img/Instagram-logo.png" alt="Instagram">
+                    </a>
+                    <a href="#" id="whatsapp-link" target="_blank" class="social-btn whatsapp">
+                        <img src="img/whatsapp-logo.webp" alt="WhatsApp">
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61581986236992" target="_blank" class="social-btn facebook">
+                        <img src="img/facebook-logo.webp" alt="Facebook">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="text-align: center; margin-top: 1rem;">
+            <p>&copy; 2025 ECOTEXTIL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+<script>
+
+    const whatsappPhoneNumber = '3112072383'; 
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const whatsappLink = document.getElementById('whatsapp-link');
+        if (whatsappLink && whatsappPhoneNumber) {
+            whatsappLink.href = `https://wa.me/${whatsappPhoneNumber}`;
+        }
+    });
+
+    function abrirModal() {
+        const modal = document.getElementById('miModal');
+        modal.setAttribute('aria-hidden', 'false'); 
+    }
+
+    function cerrarModal() {
+        const modal = document.getElementById('miModal');
+        modal.setAttribute('aria-hidden', 'true');
+    }
+
+    function cambiarImagen(img) {
+        const imagenPrincipal = document.getElementById('imagen-principal');
+        if (imagenPrincipal) {
+             imagenPrincipal.src = img.src;
+        } else {
+             console.warn("Elemento 'imagen-principal' no encontrado. La función 'cambiarImagen' solo es relevante en páginas de detalle de producto.");
+        }
+    }
+
+
+
+// ===================================================================
+//  NUEVA LÓGICA DEL CARRITO PARA LA PÁGINA DE LISTA DE PRODUCTOS
+// ===================================================================
+
+// Función para mostrar el mensaje de confirmación
+function mostrarMensajeCarrito() {
+    const mensaje = document.getElementById('mensaje-carrito');
+    if (mensaje) {
+        mensaje.style.display = 'block';
+        setTimeout(() => {
+            mensaje.style.display = 'none';
+        }, 1500);
+    }
+}
+
+// Nueva función: Agrega un producto al carrito
+function agregarAlCarrito(nombre, precio, cantidad) {
+    const precioNumerico = parseInt(precio, 10);
+    const cantidadNumerica = parseInt(cantidad, 10) || 1; // Asegura que sea al menos 1
+
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const index = carrito.findIndex(item => item.nombre === nombre);
+
+    if (index > -1) {
+        carrito[index].cantidad += cantidadNumerica;
+    } else {
+        carrito.push({ nombre, precio: precioNumerico, cantidad: cantidadNumerica });
+    }
+
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+    
+    // Llama a la función de actualización del contador
+    actualizarContadorCarrito(); 
+
+    // Muestra el mensaje "Producto agregado al carrito"
+    mostrarMensajeCarrito();
+}
+
+// Función para calcular y actualizar el contador del carrito (La mantienes igual)
+function actualizarContadorCarrito() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    const cantidadTotal = carrito.reduce((acc, item) => acc + item.cantidad, 0); 
+    
+    const contador = document.getElementById('contador-carrito');
+    if (contador) contador.textContent = cantidadTotal;
+}
+
+// ===================================================================
+//  CONTROLADOR DE EVENTOS PRINCIPAL PARA LOS BOTONES
+// ===================================================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializa el contador del carrito al cargar la página
+    actualizarContadorCarrito();
+    
+    // 1. Selecciona todos los botones 'Agregar al Carrito'
+    const botonesAgregar = document.querySelectorAll('.add-to-cart');
+
+    // 2. Agrega el evento de clic a cada botón
+    botonesAgregar.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const boton = event.currentTarget;
+            const productoCard = boton.closest('.product'); // Encuentra la tarjeta padre
+            
+            // Extrae los datos del botón (data-name, data-price)
+            const nombreProducto = boton.getAttribute('data-name');
+            const precioProducto = boton.getAttribute('data-price');
+            
+            // Extrae la cantidad del input dentro de la tarjeta
+            const cantidadInput = productoCard.querySelector('input[type="number"]');
+            
+            let cantidadProducto = 1;
+            if (cantidadInput) {
+                cantidadProducto = cantidadInput.value;
+            }
+
+            // Llama a la función que guarda en localStorage
+            agregarAlCarrito(nombreProducto, precioProducto, cantidadProducto);
+        });
+    });
+
+
+
+// ✅ CÓDIGO CORREGIDO: Calcula el total a partir de la lista 'carrito'
+function actualizarContadorCarrito() {
+    // 1. Lee la lista completa del carrito
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    // 2. Calcula el total sumando las cantidades de cada producto
+    const cantidadTotal = carrito.reduce((acc, item) => acc + item.cantidad, 0); 
+    
+    // 3. Actualiza el elemento del contador en la interfaz
+    const contador = document.getElementById('contador-carrito');
+    if (contador) contador.textContent = cantidadTotal;
+}
+
+
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatClose = document.getElementById('close-chat');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+    const clearChatButton = document.getElementById('clear-chat-button');
+    const chatMessages = document.getElementById('chat-messages');
+
+    const productos = [
+        { nombre: "Maleta de Jean", link: "productomaleta.html", categoria: "accesorios", precio: "$29.000", caracteristicas: "Hecha de tela de jean reciclada, forrada con tela sintética. Ideal para el día a día. Cómoda y duradera.", medidas: "40cm x 35cm", imagen: "img/WhatsApp Image 2025-09-11 at 1.32.17 PM.jpeg" },
+        { nombre: "Bolso de Jean", link: "productobolso.html", categoria: "accesorios", precio: "$22.000", caracteristicas: "Hecho de tela de jean reciclada. Ideal para el día a día. Cómodo y duradero.", medidas: "25cm x 30cm", imagen: "img/bolsojean.jpg" },
+        { nombre: "Trapo para Limpiar", link: "productotrapo.html", categoria: "hogar", precio: "$6.000", caracteristicas: "Elaborado con telas de algodón reutilizadas. Absorbe líquidos de manera eficiente. Ideal para la limpieza del hogar.", medidas: "24cm x 24cm", imagen: "img/WhatsApp Image 2025-06-06 at 1.17.37 PM (2).jpeg" },
+        { nombre: "Funda para Almohada", link: "productofunda.html", categoria: "hogar", precio: "$8.000", caracteristicas: "Fabricada con retazos de tela de distintos colores. Suave al tacto y fácil de lavar.", medidas: "43cm x 43cm", imagen: "img/WhatsApp Image 2025-08-29 at 1.40.49 PM.jpeg" },
+        { nombre: "Cama para Perro", link: "productocamaperro.html", categoria: "mascotas", precio: "$30.000", caracteristicas: "Rellena con fibras de ropa reciclada. Proporciona comodidad y calidez a tu mascota.", medidas: "40cm x 40cm", imagen: "img/WhatsApp Image 2025-06-05 at 11.37.26 PM.jpeg" },
+        { nombre: "Cama para Gato", link: "productocamagato.html", categoria: "mascotas", precio: "$30.000", caracteristicas: "Diseñada para el confort de los felinos. Materiales suaves y ecológicos.", medidas: "40cm x 40cm", imagen: "img/WhatsApp Image 2025-06-05 at 11.37.26 PM.jpeg" },
+        { nombre: "Pañoleta", link: "productopañoleta.html", categoria: "mascotas", precio: "$8.000", caracteristicas: "Perfecta para complementar el look de tu mascota. Hecha de tela de algodón reutilizada.", medidas: "39cm x 95cm", imagen: "img/pañoleta.jpg" },
+        { nombre: "Pañoleta para Gato", link: "productopanoletagato.html", categoria: "mascotas", precio: "$7.000", caracteristicas: "Diseño ligero y cómodo, ideal para felinos. Materiales suaves y ecológicos.", medidas: "25cm x 45cm", imagen: "img/panoletagato.jpg" },
+    ];
+
+    function addMessage(msg, sender = "bot", isHtml = false) {
+        const div = document.createElement('div');
+        div.classList.add('message');
+        div.classList.add(sender === "bot" ? "bot-message" : "user-message");
+        if (isHtml) {
+            div.innerHTML = msg;
+        } else {
+            div.textContent = msg;
+        }
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function displayCategoryAccordion() {
+        const categories = ['mascotas', 'hogar', 'accesorios'];
+        let html = '<p>Puedes explorar nuestros productos por categoría:</p>';
+        
+        categories.forEach(category => {
+            const categoryProducts = productos.filter(p => p.categoria === category);
+            const categoryId = `category-${category}-${Date.now()}`;
+            
+            html += `
+                <div class="product-accordion-item">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="${categoryId}">
+                        ${category.charAt(0).toUpperCase() + category.slice(1)}
+                        <span class="accordion-icon">▶</span>
+                    </button>
+                    <div id="${categoryId}" class="accordion-content">
+                        <div class="category-content-container">
+                            ${categoryProducts.map((p, index) => {
+                                const productId = `product-${p.nombre.replace(/\s/g, '-')}-${Date.now()}-${index}`;
+                                
+                                if (p.nombre === "Pañoleta") {
+                                    const sizes = [
+                                        { name: "Perros Grandes", measures: "95cm de ancho (cuello grande, tipo Labrador Retriever,Golden Retriever,Pastor Alemán)" },
+                                        { name: "Perros Medianos", measures: "95cm aprox (cuello mediano, tipo Poodle mediano o pequeño,Cocker Spaniel,Jack Russell Terrier)" },
+                                        { name: "Perros Pequeños", measures: "79cm de ancho (cuello pequeño, tipoShiba Inu,Pug)" }
+                                    ];
+                                    
+                                    return `
+                                        <div class="product-accordion-item-nested">
+                                            <button class="accordion-button" aria-expanded="false" aria-controls="${productId}">
+                                                ${p.nombre} (Para Perros)
+                                                <span class="accordion-icon">▶</span>
+                                            </button>
+                                            <div id="${productId}" class="accordion-content" style="padding: 10px 0;">
+                                                <p style="margin-bottom: 10px;">¡Consulta el tamaño perfecto para tu perro! 🐶</p>
+                                                ${sizes.map((size, sizeIndex) => {
+                                                    const sizeId = `${productId}-size-${sizeIndex}`;
+                                                    return `
+                                                        <div class="product-accordion-item-size">
+                                                            <button class="accordion-button-size" aria-expanded="false" aria-controls="${sizeId}">
+                                                                ${size.name}
+                                                                <span class="accordion-icon" style="float: right;">▶</span>
+                                                            </button>
+                                                            <div id="${sizeId}" class="accordion-content-size">
+                                                                <p><strong>Precio:</strong> ${p.precio}</p>
+                                                                <p><strong>Medida:</strong> ${size.measures}</p>
+                                                                <p><strong>Características:</strong> ${p.caracteristicas}</p>
+                                                                <button class="buy-button" onclick="window.location.href='${p.link}'" style="margin-top: 10px; display: block; width: 100%;">Ver y Comprar</button>
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                                }).join('')}
+                                            </div>
+                                        </div>
+                                    `;
+                                } 
+                                else if (p.nombre === "Pañoleta para Gato") {
+                                    const sizes = [
+                                        { name: "Gatos Adultos", measures: "45cm (cuello estándar, razas comunes)" },
+                                        { name: "Gatos Pequeños/Gatitos", measures: "25cm (para mascotas pequeñas o crecimiento)" }
+                                    ];
+                                    
+                                    const productIdCat = `product-panoletagato-${Date.now()}-${index}`;
+
+                                    return `
+                                        <div class="product-accordion-item-nested">
+                                            <button class="accordion-button" aria-expanded="false" aria-controls="${productIdCat}">
+                                                ${p.nombre} 
+                                                <span class="accordion-icon">▶</span>
+                                            </button>
+                                            <div id="${productIdCat}" class="accordion-content" style="padding: 10px 0;">
+                                                <p style="margin-bottom: 10px;">¡Consulta el tamaño perfecto para tu gato! 😻</p>
+                                                ${sizes.map((size, sizeIndex) => {
+                                                    const sizeId = `${productIdCat}-size-${sizeIndex}`;
+                                                    return `
+                                                        <div class="product-accordion-item-size">
+                                                            <button class="accordion-button-size" aria-expanded="false" aria-controls="${sizeId}">
+                                                                ${size.name}
+                                                                <span class="accordion-icon" style="float: right;">▶</span>
+                                                            </button>
+                                                            <div id="${sizeId}" class="accordion-content-size">
+                                                                <p><strong>Precio:</strong> ${p.precio}</p>
+                                                                <p><strong>Medida:</strong> ${size.measures}</p>
+                                                                <p><strong>Características:</strong> ${p.caracteristicas}</p>
+                                                                <button class="buy-button" onclick="window.location.href='${p.link}'" style="margin-top: 10px; display: block; width: 100%;">Ver y Comprar</button>
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                                }).join('')}
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                                
+                                return `
+                                    <div class="product-accordion-item-nested">
+                                        <button class="accordion-button" aria-expanded="false" aria-controls="${productId}">
+                                            ${p.nombre}
+                                            <span class="accordion-icon">▶</span>
+                                        </button>
+                                        <div id="${productId}" class="accordion-content">
+                                            <img src="${p.imagen}" alt="${p.nombre}" style="max-width:120px; border-radius:8px; margin-bottom:8px;">
+                                            <p><strong>Precio:</strong> ${p.precio}</p>
+                                            <p><strong>Características:</strong> ${p.caracteristicas}</p>
+                                            <p><strong>Medidas:</strong> ${p.medidas}</p>
+                                            <button class="buy-button" onclick="window.location.href='${p.link}'">Ver y Comprar</button>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        addMessage(html, "bot", true);
+        setupAccordionListeners();
+        setupSizeAccordionListeners(); 
+    }
+
+    function setupSizeAccordionListeners() {
+        document.querySelectorAll('.accordion-button-size').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                const content = document.getElementById(button.getAttribute('aria-controls'));
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                const productContent = button.closest('.accordion-content');
+                productContent.querySelectorAll('.accordion-button-size').forEach(btn => {
+                    const cnt = document.getElementById(btn.getAttribute('aria-controls'));
+                    if (btn !== button && btn.getAttribute('aria-expanded') === 'true') {
+                        btn.setAttribute('aria-expanded', 'false');
+                        cnt.style.display = 'none';
+                        btn.querySelector('.accordion-icon').textContent = '▶';
+                    }
+                });
+
+                button.setAttribute('aria-expanded', !isExpanded);
+                content.style.display = isExpanded ? 'none' : 'block';
+                button.querySelector('.accordion-icon').textContent = isExpanded ? '▶' : '▼';
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        });
+    }
+
+    function setupAccordionListeners() {
+        document.querySelectorAll('.accordion-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = document.getElementById(button.getAttribute('aria-controls'));
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                button.setAttribute('aria-expanded', !isExpanded);
+                content.classList.toggle('active');
+
+                const innerContent = content.querySelector('.category-content-container');
+                if (innerContent) {
+                    innerContent.classList.toggle('active', !isExpanded);
+                }
+                
+                button.querySelector('.accordion-icon').textContent = isExpanded ? '▶' : '▼';
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        });
+    }
+
+    function handleBotResponse(query) {
+        const welcomeMessage = `
+            ¡Hola! Soy el asistente de Ecotextil. 🌱
+            <br><br>
+            ¿En qué puedo ayudarte?
+        `;
+        addMessage(welcomeMessage, "bot", true);
+        displayCategoryAccordion();
+        return;
+    }
+
+    chatbotToggle.addEventListener('click', () => {
+        const isVisible = chatbotWindow.style.display === 'block';
+        chatbotWindow.style.display = isVisible ? 'none' : 'block';
+        if (!isVisible) {
+            chatMessages.innerHTML = '';
+            handleBotResponse(""); 
+        }
+    });
+
+    chatClose.addEventListener('click', () => {
+        chatbotWindow.style.display = 'none';
+    });
+
+    sendButton.addEventListener('click', () => {
+        const text = userInput.value.trim();
+        if (text === "") return;
+        addMessage(text, "user");
+        chatMessages.innerHTML = ''; 
+        handleBotResponse(text);
+        userInput.value = '';
+    });
+
+    userInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter') sendButton.click();
+    });
+
+    clearChatButton.addEventListener('click', () => {
+        chatMessages.innerHTML = '';
+        handleBotResponse("");
+    });
+
+    // ===================================================================
+// LÓGICA DE ORDENAMIENTO POR PRECIO
+// ===================================================================
+
+function sortProducts(order) {
+    const productListContainer = document.getElementById('product-list');
+    const products = Array.from(productListContainer.querySelectorAll('.product'));
+
+    products.sort((a, b) => {
+        // Obtener el precio del atributo data-price del botón 'Agregar al Carrito'
+        const priceA = parseFloat(a.querySelector('.add-to-cart').getAttribute('data-price'));
+        const priceB = parseFloat(b.querySelector('.add-to-cart').getAttribute('data-price'));
+
+        if (order === 'asc') {
+            return priceA - priceB;
+        } else { // 'desc'
+            return priceB - priceA;
+        }
+    });
+
+    // Reinsertar los productos ordenados
+    products.forEach(product => {
+        productListContainer.appendChild(product);
+    });
+}
+
+// Agrega el event listener DENTRO de document.addEventListener('DOMContentLoaded', ...)
+const sortSelect = document.getElementById('sort-price');
+if (sortSelect) {
+    sortSelect.addEventListener('change', (event) => {
+        sortProducts(event.target.value);
+    });
+    // Opcional: Ejecutar el ordenamiento inicial (ascendente por defecto)
+    sortProducts(sortSelect.value); 
+}
+})
+</script>
+</body>
+</html>

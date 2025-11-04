@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Producto - ECOTEXTIL</title>
+  <link rel="stylesheet" href="styleslavanda.css">
+  <style>
+    .producto-detalle {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 2rem auto;
+      gap: 2rem;
+    }
+
+    .galeria {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .miniaturas {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .miniaturas img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 8px;
+    }
+
+    .miniaturas img:hover {
+      border-color: #ccc;
+    }
+
+    .info {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .precio {
+      font-size: 2.0rem;
+      color: #444;
+    }
+
+
+    .mensaje {
+      color: green;
+      margin-top: 1rem;
+    }
+
+    .carrito-contador {
+      position: relative;
+    }
+
+    .carrito-contador span {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: red;
+      color: white;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-centro">
+            <img src="img/logo_transparente_final.png" alt="Logo de Ecotextil">
+            <p>"De lo que otros desechan, nosotros creamos algo con proposito"</p>
+            <ul class="menu">
+                <li><a href="index.html">inicio</a></li>
+                <li class="dropdown">
+                    <a href="nosotros.html">Nosotros ▼</a>
+                    <ul class="submenu">
+                        <li><a href="#quienes-somos">Quiénes Somos</a></li>
+                        <li><a href="#nuestra-mision">Nuestra Misión</a></li>
+                        <li><a href="#nuestra-vision">Nuestra Visión</a></li>
+                        <li><a href="#resultados">Resultados de la Encuesta</a></li>
+                    </ul>
+                </li>
+                <li><a href="productos2.html">Productos</a></li>
+                <li>
+                    <a href="Carrito.html" class="carrito-icono" style="position: relative;">
+                       <img src="img/464-4646442_carrito-de-compras-carro-de-compras-blanco-clipart.png" alt="Carrito de compras" style="width: 24px; height: 24px;">
+                       <span id="contador-carrito" style="position: absolute; top: -8px; right: -8px; background-color: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px;">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+  <main class="producto-detalle">
+    <div class="galeria">
+      <img id="imagen-principal" src="img/WhatsApp Image 2025-09-11 at 1.32.17 PM.jpeg" alt="Bolso de Jean">
+      <div class="miniaturas">
+        <img src="img/WhatsApp Image 2025-09-11 at 1.32.17 PM.jpeg" alt="Mini 1" onclick="cambiarImagen(this)">
+        <img src="img/WhatsApp Image 2025-09-11 at 1.32.17 PM (1).jpeg" alt="Mini 2" onclick="cambiarImagen(this)">
+        <img src="img/WhatsApp Image 2025-09-11 at 1.32.17 PM (2).jpeg" alt="Mini 3" onclick="cambiarImagen(this)">                                                              
+      </div>
+    </div>
+
+    <div class="info">
+      <h2>Maleta de Jean</h2>
+      <p>Maleta ecológica fabricada con jean reciclado, rescatando telas en desuso para darles una segunda oportunidad, comoda e ideal para el día a día.</p>
+      <h3>Medidas:</h3><p>40cm x 35cm</p>
+      <h3>Precio:</h3>
+      <p class="precio" id="producto-precio-texto" data-precio="29000">$29.000</p>
+
+      <label for="cantidad-input"><h3>Cantidad:</h3></label>
+      <input type="number" id="cantidad-input" value="1" min="1" style="width: 80px; margin-bottom: 15px;">
+
+      <button class="btn-agregar" id="btn-agregar-carrito">Añadir al carrito</button>
+      <p class="mensaje" id="mensaje-ok" style="display: none;">Producto agregado al carrito</p>
+    </div>
+
+
+
+    <div id="chatbot-container">
+        <button id="chatbot-toggle" class="circle-button"> 💬 </button>
+        <div id="chatbot-window">
+            <div id="chat-header">
+                <h3>Asistente Ecotextil</h3>
+                <span id="close-chat">&times;</span>
+            </div>
+            <div id="chat-messages">
+                </div>
+            <div id="chat-input-container">
+                <input type="text" id="user-input" placeholder="Escribe aquí..." />
+                <button id="send-button">Enviar</button>
+                <button id="clear-chat-button">Limpiar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-details-popup">
+        <div id="product-details-content">
+            <span id="close-popup">&times;</span>
+            <h3 id="product-name"></h3>
+            <img id="product-image" src="" alt="Imagen del producto">
+            <p id="product-description"></p>
+            <p id="product-price"></p>
+            <p id="product-features"></p>
+            <button id="buy-button">Añadir al Carrito</button>
+        </div>
+    </div>
+  </main>
+
+      <footer>
+        <div class="container" style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+            <!-- Buzón de sugerencias -->
+            <div style="flex: 1; min-width: 250px;">
+                <h3>Buzón de Sugerencias</h3>
+                <form id="sugerencias-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                    <textarea name="sugerencia" rows="4" placeholder="Escribe tu sugerencia aquí..." required
+                        style="padding: 1rem; border: 1px solid #ccc; border-radius: 8px;"></textarea>
+                    <button type="submit"
+                        style="background-color: #9c88ff; color: white; border: none; padding: 0.75rem; border-radius: 8px; cursor: pointer;">
+                        Enviar Sugerencia
+                    </button>
+                    <p id="mensaje-confirmacion" style="display: none; color: green;">¡Gracias por tu sugerencia!</p>
+                </form>
+            </div>
+
+            <!-- Redes sociales -->
+            <div style="flex: 1; min-width: 250px;">
+                <h3>Síguenos en:</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/" target="_blank" class="social-btn instagram">
+                        <img src="img/Instagram-logo.png" alt="Instagram" />
+                    </a>
+                    <a href="https://wa.me/3147700560" target="_blank" class="social-btn whatsapp">
+                        <img src="img/whatsapp-logo.webp" alt="WhatsApp" />
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" class="social-btn facebook">
+                        <img src="img/facebook-logo.webp" alt="Facebook" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="text-align: center; margin-top: 1rem;">
+            <p>&copy; 2024 ECOTEXTIL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+<script>
+    const whatsappPhoneNumber = '3112072383'; 
+
+    function abrirModal() {
+        const modal = document.getElementById('miModal');
+        if (modal) modal.setAttribute('aria-hidden', 'false'); 
+    }
+
+    function cerrarModal() {
+        const modal = document.getElementById('miModal');
+        if (modal) modal.setAttribute('aria-hidden', 'true');
+    }
+    
+    function mostrarMensajeCarrito() {
+        const mensaje = document.getElementById('mensaje-carrito');
+        if (mensaje) {
+            mensaje.style.display = 'block';
+            setTimeout(() => {
+                mensaje.style.display = 'none';
+            }, 1500);
+        }
+    }
+
+    function agregarAlCarrito(nombre, precio, cantidad,imagen) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+
+        const productoExistente = carrito.find(p => p.nombre === nombre);
+        const precioLimpio = precio.toString().replace(/[^0-9.]/g, ''); 
+        const precioNumerico = parseFloat(precioLimpio);
+        const cantidadNumerica = parseInt(cantidad, 10) || 1; 
+
+        if (isNaN(precioNumerico)) {
+            console.error("Precio no válido:", precio);
+            return;
+        }
+
+        const index = carrito.findIndex(item => item.nombre === nombre);
+
+        if (index > -1) {
+            carrito[index].cantidad += cantidadNumerica;
+        } else {
+            carrito.push({ nombre, precio: precioNumerico, cantidad: cantidadNumerica, imagen }); 
+        }
+
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        
+        actualizarContadorCarrito(); 
+
+        mostrarMensajeCarrito();
+    }
+    
+    function actualizarContadorCarrito() {
+        const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const cantidadTotal = carrito.reduce((acc, item) => acc + item.cantidad, 0); 
+        
+        const contador = document.getElementById('contador-carrito');
+        if (contador) contador.textContent = cantidadTotal;
+    }
+    
+    function setupProductCarousels() {
+        const carouselImages = document.querySelectorAll('.product .carousel-img');
+
+        carouselImages.forEach(img => {
+            const altSrc = img.getAttribute('data-alt-src');
+            if (!altSrc) return; 
+
+            const images = [img.src].concat(altSrc.split(',').map(src => src.trim()));
+            let currentIndex = 0;
+
+            const productCard = img.closest('.product');
+            if (productCard) {
+
+                productCard.addEventListener('mouseenter', () => {
+                    if (productCard.dataset.interval) {
+                        clearInterval(productCard.dataset.interval);
+                    }
+                    
+                    let hoverInterval = setInterval(() => {
+                        currentIndex = (currentIndex + 1) % images.length;
+                        img.src = images[currentIndex];
+                    }, 1500); 
+                    productCard.dataset.interval = hoverInterval; 
+                });
+
+                productCard.addEventListener('mouseleave', () => {
+                    clearInterval(productCard.dataset.interval); 
+                    currentIndex = 0;
+                    img.src = images[0]; 
+                });
+            }
+        });
+    }
+
+    function sortProducts(order) {
+        const productListContainer = document.getElementById('product-list');
+        if (!productListContainer) return;
+        
+        const products = Array.from(productListContainer.querySelectorAll('.product'));
+        products.sort((a, b) => {
+            const priceAElement = a.querySelector('.add-to-cart');
+            const priceBElement = b.querySelector('.add-to-cart');
+            
+            const priceA = priceAElement ? parseFloat(priceAElement.getAttribute('data-price')) : 0;
+            const priceB = priceBElement ? parseFloat(priceBElement.getAttribute('data-price')) : 0;
+
+            return order === 'asc' ? priceA - priceB : priceB - priceA;
+        });
+        products.forEach(product => {
+            productListContainer.appendChild(product);
+        });
+    }
+
+    
+    const productos = [
+        { nombre: "Maleta de Jean", link: "productomaleta.html", categoria: "accesorios", precio: "$29.000", caracteristicas: "Hecha de tela de jean reciclada, forrada con tela sintética. Ideal para el día a día. Cómoda y duradera.", medidas: "40cm x 35cm", imagen: "img/maletajean.jpeg" },
+        { nombre: "Bolso de Jean", link: "productobolso.html", categoria: "accesorios", precio: "$22.000", caracteristicas: "Hecho de tela de jean reciclada. Ideal para el día a día. Cómodo y duradero.", medidas: "25cm x 30cm", imagen: "img/bolsojean.jpg" },
+        { nombre: "Trapo para Limpiar", link: "productotrapo.html", categoria: "hogar", precio: "$6.000", caracteristicas: "Elaborado con telas de algodón reutilizadas. Absorbe líquidos de manera eficiente. Ideal para la limpieza del hogar.", medidas: "24cm x 24cm", imagen: "img/trapo.jpeg" },
+        { nombre: "Funda para Almohada", link: "productofunda.html", categoria: "hogar", precio: "$8.000", caracteristicas: "Fabricada con retazos de tela de distintos colores. Suave al tacto y fácil de lavar.", medidas: "43cm x 43cm", imagen: "img/funda.jpeg" },
+        { nombre: "Cama para Perro o Gato", link: "productocamaperro.html", categoria: "mascotas", precio: "$30.000", caracteristicas: "Rellena con fibras de ropa reciclada. Proporciona comodidad y calidez a tu mascota.", medidas: "40cm x 40cm", imagen: "img/cama1.jpeg" },
+        { nombre: "Pañoleta", link: "productopañoleta.html", categoria: "mascotas", precio: "$8.000", caracteristicas: "Perfecta para complementar el look de tu mascota. Hecha de tela de algodón reutilizada.", medidas: "39cm x 95cm", imagen: "img/pañoleta.jpg" },
+]
+    
+    const chatMessages = document.getElementById('chat-messages');
+
+    function addMessage(msg, sender = "bot", isHtml = false) {
+        if (!chatMessages) return; 
+        
+        const div = document.createElement('div');
+        div.classList.add('message');
+        div.classList.add(sender === "bot" ? "bot-message" : "user-message");
+        if (isHtml) {
+            div.innerHTML = msg;
+        } else {
+            div.textContent = msg;
+        }
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleSizeAccordionClick(e) {
+        const button = e.currentTarget;
+        e.stopPropagation(); 
+        const content = document.getElementById(button.getAttribute('aria-controls'));
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+
+        const productContent = button.closest('.accordion-content');
+        if (productContent) {
+            productContent.querySelectorAll('.accordion-button-size').forEach(btn => {
+                const cnt = document.getElementById(btn.getAttribute('aria-controls'));
+                if (btn !== button && btn.getAttribute('aria-expanded') === 'true') {
+                    btn.setAttribute('aria-expanded', 'false');
+                    if(cnt) cnt.style.display = 'none';
+                    const icon = btn.querySelector('.accordion-icon');
+                    if(icon) icon.textContent = '▶';
+                }
+            });
+        }
+
+        button.setAttribute('aria-expanded', !isExpanded);
+
+        if(content) content.style.display = isExpanded ? 'none' : 'block'; 
+        const icon = button.querySelector('.accordion-icon');
+        if(icon) icon.textContent = isExpanded ? '▶' : '▼';
+
+        if(chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    function setupSizeAccordionListeners() {
+        document.querySelectorAll('.accordion-button-size').forEach(button => {
+            button.removeEventListener('click', handleSizeAccordionClick); 
+            button.addEventListener('click', handleSizeAccordionClick);
+        });
+    }
+
+    function handleMainAccordionClick(e) {
+        const button = e.currentTarget;
+        const content = document.getElementById(button.getAttribute('aria-controls'));
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', !isExpanded);
+        
+        if (content) {
+            content.classList.toggle('active');
+            
+
+            if (content.classList.contains('active')) {
+
+                const scrollHeight = content.scrollHeight;
+                content.style.maxHeight = scrollHeight + "px";
+                setupSizeAccordionListeners();
+            } else {
+
+                content.style.maxHeight = "0";
+            }
+        }
+        
+        const icon = button.querySelector('.accordion-icon');
+        if(icon) icon.textContent = isExpanded ? '▶' : '▼';
+
+        if(chatMessages) chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function setupAccordionListeners() {
+
+        document.querySelectorAll('.product-accordion-item > .accordion-button, .product-accordion-item-nested > .accordion-button').forEach(button => {
+            button.removeEventListener('click', handleMainAccordionClick);
+            button.addEventListener('click', handleMainAccordionClick);
+        });
+    }
+    
+    
+    function displayCategoryAccordion(clear = true) {
+        if (!chatMessages) return;
+
+        if(clear) {
+            chatMessages.innerHTML = '';
+
+            addMessage("¡Hola! Soy el asistente de Ecotextil. 🌱<br><br>Puedes explorar nuestros productos por categoría:", "bot", true);
+        }
+
+        const categories = ['mascotas', 'hogar', 'accesorios'];
+        let htmlAcordeon = '';
+        
+        categories.forEach(category => {
+            const categoryProducts = productos.filter(p => p.categoria === category);
+
+            const categoryId = `category-${category}-${Date.now()}`; 
+            
+            htmlAcordeon += `
+                <div class="product-accordion-item">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="${categoryId}">
+                        ${category.charAt(0).toUpperCase() + category.slice(1)}
+                        <span class="accordion-icon">▶</span>
+                    </button>
+                    <div id="${categoryId}" class="accordion-content">
+                        <div class="category-content-container">
+                            ${categoryProducts.map((p, index) => {
+                                const productId = `product-${p.nombre.replace(/\s/g, '-')}-${Date.now()}-${index}`;
+                                
+                                if (p.nombre.includes("Pañoleta")) {
+                                    const isDog = p.nombre === "Pañoleta";
+                                    const sizes = isDog ? [
+                                        { name: "Perros Grandes", measures: "95cm de ancho (cuello grande, tipo Labrador Retriever,Golden Retriever,Pastor Alemán)" },
+                                        { name: "Perros Medianos", measures: "95cm aprox (cuello mediano, tipo Poodle mediano o pequeño,Cocker Spaniel,Jack Russell Terrier)" },
+                                        { name: "Perros Pequeños", measures: "79cm de ancho (cuello pequeño, tipoShiba Inu,Pug)" }
+                                    ] : [
+                                        { name: "Gatos Adultos", measures: "45cm (cuello estándar, razas comunes)" },
+                                        { name: "Gatos Pequeños/Gatitos", measures: "25cm (para mascotas pequeñas o crecimiento)" }
+                                    ];
+                                    
+                                    const productLabel = isDog ? `${p.nombre} (Para Perros)` : p.nombre;
+                                    
+                                    return `
+                                        <div class="product-accordion-item-nested">
+                                            <button class="accordion-button" aria-expanded="false" aria-controls="${productId}">
+                                                ${productLabel}
+                                                <span class="accordion-icon">▶</span>
+                                            </button>
+                                            <div id="${productId}" class="accordion-content">
+                                                <p style="margin-bottom: 10px; padding: 0 15px;">¡Consulta el tamaño perfecto para tu ${isDog ? 'perro' : 'gato'}! ${isDog ? '🐶' : '😻'}</p>
+                                                ${sizes.map((size, sizeIndex) => {
+                                                    const sizeId = `${productId}-size-${sizeIndex}`;
+                                                    return `
+                                                        <div class="product-accordion-item-size">
+                                                            <button class="accordion-button-size" aria-expanded="false" aria-controls="${sizeId}">
+                                                                ${size.name}
+                                                                <span class="accordion-icon" style="float: right;">▶</span>
+                                                            </button>
+                                                            <div id="${sizeId}" class="accordion-content-size" style="display:none;">
+                                                                <p><strong>Precio:</strong> ${p.precio}</p>
+                                                                <p><strong>Medida:</strong> ${size.measures}</p>
+                                                                <p><strong>Características:</strong> ${p.caracteristicas}</p>
+                                                                <button class="buy-button" onclick="window.location.href='${p.link}'" style="margin-top: 10px; display: block; width: 100%;">Ver y Comprar</button>
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                                }).join('')}
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+
+                                return `
+                                    <div class="product-accordion-item-nested">
+                                        <button class="accordion-button" aria-expanded="false" aria-controls="${productId}">
+                                            ${p.nombre}
+                                            <span class="accordion-icon">▶</span>
+                                        </button>
+                                        <div id="${productId}" class="accordion-content">
+                                            <img src="${p.imagen}" alt="${p.nombre}" style="max-width:120px; border-radius:8px; margin-bottom:8px;">
+                                            <p><strong>Precio:</strong> ${p.precio}</p>
+                                            <p><strong>Características:</strong> ${p.caracteristicas}</p>
+                                            <p><strong>Medidas:</strong> ${p.medidas}</p>
+                                            <button class="buy-button" onclick="window.location.href='${p.link}'">Ver y Comprar</button>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        
+        addMessage(htmlAcordeon, "bot", true);
+        
+
+        setupAccordionListeners(); 
+        setupSizeAccordionListeners(); 
+    }
+    
+
+    function initializeChatbotContent() {
+        if (chatMessages) {
+
+            chatMessages.innerHTML = '';
+            displayCategoryAccordion(false); 
+        }
+    }
+
+
+    function handleUserInput() {
+        const userInput = document.getElementById('user-input');
+        const userText = userInput.value.trim().toLowerCase();
+        
+        if (userText === '') return;
+
+        addMessage(userInput.value, 'user');
+        userInput.value = ''; 
+
+        let botResponse = '';
+        let isHtmlResponse = false;
+
+        if (userText.includes('ver productos') || userText.includes('productos') || userText.includes('categorías')) {
+            chatMessages.innerHTML = '';
+            displayCategoryAccordion(false);
+            return;
+        } else if (userText.includes('contacto') || userText.includes('whatsapp') || userText.includes('número')) {
+            botResponse = `Puedes contactarnos directamente por WhatsApp al <a href="https://wa.me/${whatsappPhoneNumber}" target="_blank"> ${whatsappPhoneNumber}</a> o visitar nuestra página de <a href="Contactanos.html">Contacto</a>.`;
+            isHtmlResponse = true;
+        } else if (userText.includes('quiénes somos') || userText.includes('misión') || userText.includes('visión')) {
+            botResponse = `ECOTEXTIL es un proyecto enfocado en la **sostenibilidad** y la **economía circular**. Transformamos textiles de desecho en productos útiles y de calidad. ¡Conócenos mejor en nuestra página de <a href="nosotros.html">Nosotros</a>!`;
+            isHtmlResponse = true;
+        } else {
+            const productoEncontrado = productos.find(p => 
+                userText.includes(p.nombre.toLowerCase().replace('de ','').replace('para ','')) || 
+                userText.includes(p.categoria)
+            );
+
+            if (productoEncontrado) {
+                botResponse = `¡Claro! El producto **${productoEncontrado.nombre}** de la categoría *${productoEncontrado.categoria}* tiene un precio de **${productoEncontrado.precio}**. Sus características principales son: ${productoEncontrado.caracteristicas}. Puedes verlo aquí: <a href="${productoEncontrado.link}">Ver Producto</a>.`;
+                isHtmlResponse = true;
+            } else {
+                botResponse = "Disculpa, no entendí tu pregunta. ¿Puedes intentar con 'Ver productos', 'Contacto', o el nombre de un producto (ej: 'Maleta de Jean')? También puedes usar los acordeones de arriba. 😉";
+            }
+        }
+        
+        addMessage(botResponse, "bot", isHtmlResponse);
+    }
+
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+
+        actualizarContadorCarrito(); 
+        
+
+        setupProductCarousels();
+
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const name = e.target.getAttribute('data-name');
+                const price = e.target.getAttribute('data-price');
+                const quantityInput = e.target.closest('.product').querySelector('.quantity-input');
+                const quantity = quantityInput ? quantityInput.value : '1';
+                agregarAlCarrito(name, price, quantity);
+            });
+        });
+
+
+        const sortSelect = document.getElementById('sort-price');
+        if (sortSelect) {
+            sortSelect.addEventListener('change', (e) => {
+                sortProducts(e.target.value);
+            });
+            sortProducts(sortSelect.value); 
+        }
+        
+
+
+       const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotWindow = document.getElementById('chatbot-window');
+    const chatClose = document.getElementById('close-chat');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+    const clearChatButton = document.getElementById('clear-chat-button');
+    const chatMessages = document.getElementById('chat-messages');
+
+
+    function addMessage(msg, sender = "bot", isHtml = false) {
+        const div = document.createElement('div');
+        div.classList.add('message');
+        div.classList.add(sender === "bot" ? "bot-message" : "user-message");
+        if (isHtml) {
+            div.innerHTML = msg;
+        } else {
+            div.textContent = msg;
+        }
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function displayCategoryAccordion() {
+        const categories = ['mascotas', 'hogar', 'accesorios'];
+        let html = '<p>Puedes explorar nuestros productos por categoría:</p>';
+        
+        categories.forEach(category => {
+            const categoryProducts = productos.filter(p => p.categoria === category);
+            const categoryId = `category-${category}-${Date.now()}`;
+            
+            html += `
+                <div class="product-accordion-item">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="${categoryId}">
+                        ${category.charAt(0).toUpperCase() + category.slice(1)}
+                        <span class="accordion-icon">▶</span>
+                    </button>
+                    <div id="${categoryId}" class="accordion-content">
+                        <div class="category-content-container">
+                            ${categoryProducts.map((p, index) => {
+                                const productId = `product-${p.nombre.replace(/\s/g, '-')}-${Date.now()}-${index}`;
+                                
+
+
+                                
+                                return `
+                                    <div class="product-accordion-item-nested">
+                                        <button class="accordion-button" aria-expanded="false" aria-controls="${productId}">
+                                            ${p.nombre}
+                                            <span class="accordion-icon">▶</span>
+                                        </button>
+                                        <div id="${productId}" class="accordion-content">
+                                            <img src="${p.imagen}" alt="${p.nombre}" style="max-width:120px; border-radius:8px; margin-bottom:8px;">
+                                            <p><strong>Precio:</strong> ${p.precio}</p>
+                                            <p><strong>Características:</strong> ${p.caracteristicas}</p>
+                                            <p><strong>Medidas:</strong> ${p.medidas}</p>
+                                            <button class="buy-button" onclick="window.location.href='${p.link}'">Ver y Comprar</button>
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        addMessage(html, "bot", true);
+        setupAccordionListeners();
+        setupSizeAccordionListeners(); 
+    }
+
+    function setupSizeAccordionListeners() {
+        document.querySelectorAll('.accordion-button-size').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); 
+                const content = document.getElementById(button.getAttribute('aria-controls'));
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                const productContent = button.closest('.accordion-content');
+                productContent.querySelectorAll('.accordion-button-size').forEach(btn => {
+                    const cnt = document.getElementById(btn.getAttribute('aria-controls'));
+                    if (btn !== button && btn.getAttribute('aria-expanded') === 'true') {
+                        btn.setAttribute('aria-expanded', 'false');
+                        cnt.style.display = 'none';
+                        btn.querySelector('.accordion-icon').textContent = '▶';
+                    }
+                });
+
+                button.setAttribute('aria-expanded', !isExpanded);
+                content.style.display = isExpanded ? 'none' : 'block';
+                button.querySelector('.accordion-icon').textContent = isExpanded ? '▶' : '▼';
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        });
+    }
+
+    function setupAccordionListeners() {
+        document.querySelectorAll('.accordion-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = document.getElementById(button.getAttribute('aria-controls'));
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                button.setAttribute('aria-expanded', !isExpanded);
+                content.classList.toggle('active');
+
+                const innerContent = content.querySelector('.category-content-container');
+                if (innerContent) {
+                    innerContent.classList.toggle('active', !isExpanded);
+                }
+                
+                button.querySelector('.accordion-icon').textContent = isExpanded ? '▶' : '▼';
+
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        });
+    }
+
+    function handleBotResponse(query) {
+        const welcomeMessage = `
+            ¡Hola! Soy el asistente de Ecotextil. 🌱
+            <br><br>
+            ¿En qué puedo ayudarte?
+        `;
+        addMessage(welcomeMessage, "bot", true);
+        displayCategoryAccordion();
+        return;
+    }
+
+    chatbotToggle.addEventListener('click', () => {
+        const isVisible = chatbotWindow.style.display === 'block';
+        chatbotWindow.style.display = isVisible ? 'none' : 'block';
+        if (!isVisible) {
+            chatMessages.innerHTML = '';
+            handleBotResponse(""); 
+        }
+    });
+
+    chatClose.addEventListener('click', () => {
+        chatbotWindow.style.display = 'none';
+    });
+
+    sendButton.addEventListener('click', () => {
+        const text = userInput.value.trim();
+        if (text === "") return;
+        addMessage(text, "user");
+        chatMessages.innerHTML = ''; 
+        handleBotResponse(text);
+        userInput.value = '';
+    });
+
+    userInput.addEventListener('keypress', e => {
+        if (e.key === 'Enter') sendButton.click();
+    });
+
+    clearChatButton.addEventListener('click', () => {
+        chatMessages.innerHTML = '';
+        handleBotResponse("");
+    });     
+
+
+
+
+      
+        const sugerenciasForm = document.getElementById('sugerencias-form');
+        if (sugerenciasForm) {
+            sugerenciasForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const mensaje = document.getElementById('mensaje-confirmacion');
+                if (mensaje) {
+                    mensaje.style.display = 'block';
+                    setTimeout(() => {
+                        mensaje.style.display = 'none';
+                    }, 3000);
+                }
+                sugerenciasForm.reset();
+            });
+        }
+
+
+    // ... [Tu código existente (actualizarContadorCarrito, setupProductCarousels, etc.)] ...
+    
+    // --- NUEVA LÓGICA PARA AGREGAR AL CARRITO ---
+const botonAgregar = document.getElementById('btn-agregar-carrito');
+    const mensajeOk = document.getElementById('mensaje-ok');
+
+    if (botonAgregar) {
+        // Añadimos el listener de clic al botón de la página individual
+        botonAgregar.addEventListener('click', () => {
+            
+            // 1. EXTRAER los datos desde los IDs de productotrapo.html
+            
+            // Nombre del producto (desde el <h2>)
+            const nombreElemento = document.querySelector('.info h2'); 
+            const nombre = nombreElemento ? nombreElemento.textContent.trim() : 'Trapo para Limpiar'; 
+
+            // Precio (desde el data-precio)
+            const precioElemento = document.getElementById('producto-precio-texto');
+            // ¡Clave! Usamos getAttribute para obtener el valor numérico 6000
+            const precio = precioElemento ? precioElemento.getAttribute('data-precio') : '0'; 
+            
+            // Cantidad (desde el input)
+            const cantidadInput = document.getElementById('cantidad-input');
+            const cantidad = parseInt(cantidadInput ? cantidadInput.value : '1', 10) || 1; 
+            
+            // Imagen (desde el src)
+            const imagenElemento = document.getElementById('imagen-principal');
+            let imagenSrc = imagenElemento ? imagenElemento.getAttribute('src') : '';
+
+            // 2. Ajuste de ruta (si la función agregarAlCarrito requiere la ruta corta)
+            // Ejemplo: si el src es '/tuproyecto/img/trapo.jpeg', lo deja como 'img/trapo.jpeg'
+            if (imagenSrc.includes('/img/')) {
+                imagenSrc = imagenSrc.substring(imagenSrc.indexOf('/img/') + 1); 
+            } else if (imagenSrc.includes('img/')) {
+                 imagenSrc = imagenSrc.substring(imagenSrc.indexOf('img/')); 
+            }
+
+            // 3. LLAMAR a la función principal que maneja el carrito
+            if (typeof agregarAlCarrito === 'function') {
+                // Se llama con los 4 parámetros esperados: nombre, precio, cantidad, imagen
+                agregarAlCarrito(nombre, precio, cantidad, imagenSrc);
+                
+                // Mostrar el mensaje de éxito
+                if (mensajeOk) {
+                    mensajeOk.style.display = 'block';
+                    setTimeout(() => {
+                        mensajeOk.style.display = 'none';
+                    }, 2000); 
+                }
+            } else {
+                console.error("Error: La función 'agregarAlCarrito' no está definida o accesible.");
+            }
+        });
+    }
+
+    });
+        function cambiarImagen(elemento) {
+  // Selecciona la imagen principal
+  const imagenPrincipal = document.getElementById("imagen-principal");
+
+  // Cambia la imagen principal al src de la miniatura clicada
+  imagenPrincipal.src = elemento.src;
+
+  // Quita la clase activa de todas las miniaturas
+  const miniaturas = document.querySelectorAll(".miniaturas img");
+  miniaturas.forEach(img => img.classList.remove("activa"));
+
+  // Agrega la clase activa a la miniatura seleccionada
+  elemento.classList.add("activa");
+}
+
+// --- Control de apertura/cierre del chatbot ---
+document.getElementById("chatbot-toggle").addEventListener("click", () => {
+  const chatWindow = document.getElementById("chatbot-window");
+  chatWindow.classList.toggle("active");
+});
+
+document.getElementById("close-chat").addEventListener("click", () => {
+  const chatWindow = document.getElementById("chatbot-window");
+  chatWindow.classList.remove("active");
+});
+
+// Inicializar chatbot al cargar
+initializeChatbotContent();
+
+document.addEventListener('DOMContentLoaded', () => {
+  actualizarContadorCarrito();
+
+  const botonAgregar = document.getElementById('btn-agregar-carrito');
+  if (botonAgregar) {
+    botonAgregar.addEventListener('click', () => {
+      const nombre = "Trapo para limpiar";
+      const precioTexto = document.getElementById('producto-precio-texto').textContent;
+      const cantidad = document.getElementById('cantidad-input').value;
+      const imagen = "img/trapo.jpeg";
+
+      agregarAlCarrito(nombre, precioTexto, cantidad, imagen);
+
+      const mensaje = document.getElementById('mensaje-ok');
+      mensaje.style.display = 'block';
+      setTimeout(() => mensaje.style.display = 'none', 1500);
+    });
+  }
+});
+
+
+</script>
+</body>
+</html>
+

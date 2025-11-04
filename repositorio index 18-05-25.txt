@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOTEXTIL - Inicio</title>
+    <link rel="stylesheet" href="stylespruebanueva1.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>ECOTEXTIL</h1>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li> 
+                    <li><a href="productos2.html">Productos</a></li>
+                    <li><a href="Contactanos.html">Contactanos</a></li>
+                    <li><a href="Donaciones.html">Donaciones</a></li>
+                    <li>
+                        <a href="carrito.html">
+                            <img src="img/464-4646442_carrito-de-compras-carro-de-compras-blanco-clipart.png" alt="Carrito de compras" style="width: 24px; height: 24px;">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="container hero-content">
+                  <h2>Moda con Impacto</h2>
+                  <p>productos sostenibles que marcan la diferencia.</p>
+                  <a href="productos2.html" class="btn">Descubre Nuestros Productos</a>
+                  <div id="theCarousel" class="carousel slide" data-ride="carousel">
+                  </div>
+            </div>
+        </section>
+
+
+        <section class="about">
+            <div class="container">
+                <h2>¿Quiénes Somos?</h2>
+                <p>ECOTEXTIL es una empresa comprometida con el medio ambiente y la sostenibilidad. Nuestra historia comienza en 2024, cuando vimos la necesidad de crear productos de uso comun sin comprometer el futuro del planeta. Desde entonces, hemos buscado la alternativa de cuidar el medio ambiente y darle una segunda vida a prendas de vestir desechadas para llegar a convertirnos en una marca reconocida por su compromiso con la sostenibilidad, el diseño innovador y la responsabilidad social.</p>
+                <p> La idea detrás de nuestro negocio es simple: crear productos que sean tanto modernos como ecológicos, utilizando prendas de vestir recicladas y recuperadas de ser desechadas, ofreciendo una alterna más economica y más amigable con el medio ambiente que productos con una gran huella en la contaminacion hambiental.</p>
+            </div>
+        </section>
+
+        <section class="map-container">
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!4v1744670968002!6m8!1m7!1sbk1j14sh5vIoK2JMUtNqgw!2m2!1d4.575270868855458!2d-74.1135894421229!3f17.747241068286083!4f-22.212967156694617!5f1.6045439760175957" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!4v1744670167050!6m8!1m7!1sJPw5BzV2qPAT-fXfnHFYuw!2m2!1d4.57319285256184!2d-74.1136339795224!3f350.1562232426127!4f-16.690639775349567!5f1.6858017507761174" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            </div>
+
+        </section>
+
+        <section class="idea-negocio">
+            <div class="container">
+                <h2>Nuestra Misión</h2>
+                <p>Reducir la contaminación generando nuevas oportunidades mediante la reutilizacion y reciclaje de residuos textiles produciendo articulos de segunda mano.</p>
+            </div>
+        </section>
+
+        <section class="idea-negocio">
+            <div class="container">
+                <h2>Nuestra Visión</h2>
+                <p>-En dos años queremos ser un ejemplo en la transformacion de la industria textil</p>
+                <p>-En 5 años convertirnos en una empresa líder de la industria textil, reconocida por la innovacion y compromiso con la sostenibilidad</p>
+            </div>
+        </section>
+
+        <div class="slider-box">
+            <ul>
+              <!-- Imágenes principales -->
+              <li>
+                <div class="slide-item">
+                  <img src="img/pañoleta.jpg" alt="Producto 1">
+                  <p class="description">Pañoleta</p>
+                  <a href="#" class="btn-ver-mas">Ver más</a>
+                </div>
+              </li>
+              <li>
+                <div class="slide-item">
+                  <img src="img/bolsojean.jpg" alt="Producto 2">
+                  <p class="description">Bolso de Jean</p>
+                  <a href="#" class="btn-ver-mas">Ver más</a>
+                </div>
+              </li>
+              <li>
+                <div class="slide-item">
+                  <img src="img/camaparaperro.jpg" alt="Producto 3">
+                  <p class="description">Cama para Perro</p>
+                  <a href="#" class="btn-ver-mas">Ver más</a>
+                </div>
+              </li>
+          
+              <!-- Duplicadas para el loop -->
+              <li>
+                <div class="slide-item">
+                  <img src="img/pañoleta.jpg" alt="Producto 1">
+                  <p class="description">Pañoleta</p>
+                  <a href="#" class="btn-ver-mas">Ver más</a>
+                </div>
+              </li>
+              <li>
+                <div class="slide-item">
+                  <img src="img/bolsojean.jpg" alt="Producto 2">
+                  <p class="description">Bolso de Jean</p>
+                  <a href="#" class="btn-ver-mas">Ver más</a>
+                </div>
+              </li>
+              <li>
+                <div class="slide-item">
+                  <img src="img/camaparaperro.jpg" alt="Producto 3">
+                  <p class="description">Cama para Perro</p>
+                  <a href="#" class="btn-ver-mas">Ver más</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          
+    </main>
+
+    <footer>
+            <div class="container">
+        <h3>Síguenos en:</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/" target="_blank" class="social-btn instagram">
+                <img src="img/Instagram-logo.png" alt="Instagram">
+            </a>
+            <a href="https://wa.me/3147700560" target="_blank" class="social-btn whatsapp">
+                <img src="img/whatsapp-logo.webp" alt="WhatsApp">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank" class="social-btn facebook">
+                <img src="img/facebook-logo.webp" alt="Facebook">
+            </a>
+        </div>
+    </div>
+        <div class="container">
+            <p>&copy; 2024 ECOTEXTIL. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+
+        document.querySelector('.hero').addEventListener('click', function() {
+            this.classList.add('fade-out');
+        });
+
+                // Efecto en la sección hero (opcional)
+        document.querySelector('.hero').addEventListener('click', function() {
+            this.classList.add('fade-out');
+        });
+
+
+    </script>
+
+<div class="container"></div> 
+
+
+
+
+</body>
+
+
+</body>
+</html>
